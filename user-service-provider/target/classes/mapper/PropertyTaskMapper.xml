@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlb.userserviceprovider.dao.PropertyTaskMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mlb.userserviceprovider.domain.PropertyTask">
+        <id column="task_id" property="taskId" />
+        <result column="task_outline" property="taskOutline" />
+        <result column="block" property="block"/>
+        <result column="unit" property="unit"/>
+        <result column="room" property="room" />
+        <result column="create_id" property="createId" />
+        <result column="create_name" property="createName"/>
+        <result column="create_time" property="createTime" />
+        <result column="task_status" property="taskStatus" />
+        <result column="accept_id" property="acceptId" />
+        <result column="accept_time" property="acceptTime" />
+        <result column="acceeptance_time" property="acceeptanceTime" />
+        <result column="complete_time" property="completeTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        task_id, task_outline, block, unit, room, create_id,create_name,
+         create_time, task_status, accept_id, accept_time, acceeptance_time, complete_time
+    </sql>
+
+    <!--查看需求列表 -->
+    <select id="selectPageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM property_task
+        <where>
+        <choose>
+            <when test="param.userType == 1">
+               AND create_id = #{param.userId}
+            </when>
+            <otherwise>
+               <if test="param.block != null">
+                   AND block = #{param.block}
+               </if>
+               <if test="param.unit != null">
+                   AND unit = #{param.unit}
+               </if>
+               <if test="param.room != null">
+                   AND room = #{param.room}
+               </if>
+               <if test="param.createName != null">
+                   AND create_name = #{param.createName}
+               </if>
+            </otherwise>
+        </choose>
+        </where>
+    </select>
+
+    <!-- 维修工查看自己接下的需求列表-->
+    <select id="selectWorkTask" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM  property_task
+        <where>
+            accept_id = #{workId}
+        </where>
+        order by accept_time desc
+    </select>
+
+</mapper>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlb.userserviceprovider.dao.PropertyUserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mlb.userserviceprovider.domain.PropertyUser">
+        <id column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="phone" property="phone" />
+        <result column="password" property="password" />
+        <result column="user_type" property="userType" />
+        <result column="create_time" property="createTime" />
+        <result column="address" property="address"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        user_id, username, phone, password, user_type, create_time,address
+    </sql>
+
+    <!--登陆判断-->
+    <select id="selectByLogin" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> from property_user
+        <where>
+            phone = #{phone}
+            AND password = #{password}
+        </where>
+    </select>
+
+    <select id="selectPageList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> from property_user
+        <where>
+            <if test="propertyUser.username != null and propertyUser.username!=''">
+               and username like concat("%",#{propertyUser.username},"%")
+            </if>
+            <if test="propertyUser.phone != null">
+                and phone = #{propertyUser.phone}
+            </if>
+            <if test="propertyUser.userType != null">
+                and user_type = #{propertyUser.userType}
+            </if>
+            <if test="propertyUser.startTime != null and propertyUser.endTime != null">
+                and create_time between #{propertyUser.startTime} and #{propertyUser.endTime}
+            </if>
+        </where>
+    </select>
+</mapper>

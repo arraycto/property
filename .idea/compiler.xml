@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="user-service-provider" />
+        <module name="order-service-consumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="commom" target="1.8" />
+      <module name="user-interface" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="commom" options="-parameters" />
+      <module name="order-service-consumer" options="-parameters" />
+      <module name="property" options="-parameters" />
+      <module name="user-interface" options="-parameters" />
+      <module name="user-service-provider" options="-parameters" />
+    </option>
+  </component>
+</project>

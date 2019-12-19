@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Kotlin File" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1TodBPhxiwNOnNnjwMlejGp7snb" />
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mlb.userserviceprovider.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\demo\property\order-service-consumer\src\main\java\com\mlb\orderserviceconsumer\controller" />
+      <recent name="E:\demo\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\service\impl" />
+      <recent name="E:\demo\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\service" />
+      <recent name="E:\demo\property\user-service-provider\src\main\resources\mapper" />
+      <recent name="E:\demo\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\dao" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.OrderServiceConsumerApplication">
+    <configuration name="PropertyUserController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mlb.orderserviceconsumer.controller.PropertyUserController" />
+      <module name="order-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mlb.orderserviceconsumer.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderServiceConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="order-service-consumer" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mlb.orderserviceconsumer.OrderServiceConsumerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserServiceProviderApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="user-service-provider" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.mlb.userserviceprovider.UserServiceProviderApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.PropertyUserController" />
+      <item itemvalue="Spring Boot.OrderServiceConsumerApplication" />
+      <item itemvalue="Spring Boot.UserServiceProviderApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.PropertyUserController" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="" />
+      <created>1574130245941</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1574130245941</updated>
+      <workItem from="1574130249738" duration="64828000" />
+      <workItem from="1574647261186" duration="78000" />
+      <workItem from="1574647639121" duration="724000" />
+      <workItem from="1574749712184" duration="1766000" />
+      <workItem from="1575007771861" duration="2412000" />
+      <workItem from="1575249016727" duration="711000" />
+      <workItem from="1575263753519" duration="599000" />
+      <workItem from="1575275040815" duration="645000" />
+      <workItem from="1575336052513" duration="1137000" />
+      <workItem from="1575422131271" duration="2974000" />
+      <workItem from="1575508369133" duration="631000" />
+      <workItem from="1575595180698" duration="611000" />
+      <workItem from="1575611889008" duration="1169000" />
+      <workItem from="1575854178746" duration="1212000" />
+      <workItem from="1576029117504" duration="12497000" />
+      <workItem from="1576458973545" duration="11844000" />
+      <workItem from="1576654434504" duration="1465000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
