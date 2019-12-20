@@ -143,21 +143,21 @@ public class PropertyUserController {
      * @param loginUser
      * @return
      */
-    @CrossOrigin
-    @ResponseBody
-    @PostMapping("/login")
-    public JsonResult login(@RequestBody LoginUser loginUser){
-        PropertyUser propertyUser = propertyUserService.propertyUserLogin(loginUser.getPhone(),loginUser.getPassword());
-        if(ObjectUtil.isNull(propertyUser)){
-            log.info("用户名或密码错误");
-        }else{
-           String token = TokenUse.sign(propertyUser.getPhone(),propertyUser.getUserId());
-           if(token != null){
-               return JsonResult.builder().code(JsonResult.SUCCESS).msg(JsonResult.SUCCESS_MSG).data(token).build();
-           }
-        }
-        return JsonResult.builder().code(JsonResult.FAIL).msg("登陆失败").build();
-    }
+//    @CrossOrigin
+//    @ResponseBody
+//    @PostMapping("/login")
+//    public JsonResult login(@RequestBody LoginUser loginUser){
+//        PropertyUser propertyUser = propertyUserService.propertyUserLogin(loginUser.getPhone(),loginUser.getPassword());
+//        if(ObjectUtil.isNull(propertyUser)){
+//            log.info("用户名或密码错误");
+//        }else{
+//           String token = TokenUse.sign(propertyUser.getPhone(),propertyUser.getUserId());
+//           if(token != null){
+//               return JsonResult.builder().code(JsonResult.SUCCESS).msg(JsonResult.SUCCESS_MSG).data(token).build();
+//           }
+//        }
+//        return JsonResult.builder().code(JsonResult.FAIL).msg("登陆失败").build();
+//    }
 
     /**
      * 判断登陆用户
