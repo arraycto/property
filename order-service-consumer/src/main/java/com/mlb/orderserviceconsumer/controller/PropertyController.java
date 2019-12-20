@@ -5,11 +5,9 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.service.PropertyService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * <p>
@@ -26,9 +24,10 @@ public class PropertyController {
     @Reference
     private PropertyService propertyService;
 
+    @CrossOrigin
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult loginByUser(LoginUser loginUser){
+    public JsonResult loginByUser(@RequestBody LoginUser loginUser){
         return propertyService.loginByUser(loginUser);
     }
 }

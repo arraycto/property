@@ -24,6 +24,7 @@
         <where>
             username = #{loginUser.username}
             AND password = #{loginUser.password}
+            AND user_type = #{loginUser.identity}
         </where>
     </select>
 </mapper>
