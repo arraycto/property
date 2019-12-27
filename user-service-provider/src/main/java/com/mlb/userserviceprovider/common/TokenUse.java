@@ -35,13 +35,13 @@ public class TokenUse {
         //token私钥加密
         Algorithm algorithm = Algorithm.HMAC256(TOKEN_SEC_RET);
         //设置头部信息
-        Map<String, Object> requestHender = new HashMap<>(2);
-        requestHender.put("type", "JWT");
-        requestHender.put("encryption", "HS256");
+        Map<String, Object> requestHeader = new HashMap<>(2);
+        requestHeader.put("type", "JWT");
+        requestHeader.put("encryption", "HS256");
         long date1 = System.currentTimeMillis();
 
         //返回带有用户信息的签名
-        return JWT.create().withHeader(requestHender)
+        return JWT.create().withHeader(requestHeader)
                 .withClaim("userCode", userCode)
                 .withClaim("userId", userId)
                 .withClaim("Time", date1)

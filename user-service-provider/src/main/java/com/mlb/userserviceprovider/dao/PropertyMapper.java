@@ -24,5 +24,5 @@ public interface PropertyMapper extends BaseMapper<Property> {
      * @param loginUser
      * @return
      */
-    List<Property> login(@Param("loginUser")LoginUser loginUser);
+    Property login(@Param("loginUser")LoginUser loginUser);
 }

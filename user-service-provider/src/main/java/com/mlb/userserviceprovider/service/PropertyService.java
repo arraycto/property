@@ -23,6 +23,6 @@ public interface PropertyService extends IService<Property> {
      * @param loginUser
      * @return
      */
-    JsonResult loginByUser(LoginUser loginUser);
+    Property loginByUser(LoginUser loginUser);
 
 }

@@ -1,6 +1,7 @@
 package com.mlb.userserviceprovider.service.impl;
 
 
+import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mlb.userserviceprovider.common.JsonResult;
@@ -24,11 +25,7 @@ import java.util.List;
 public class PropertyServiceImpl extends ServiceImpl<PropertyMapper, Property> implements PropertyService {
 
     @Override
-    public JsonResult loginByUser(LoginUser loginUser) {
-        List<Property> properties = this.getBaseMapper().login(loginUser);
-        if (properties.size() > 0) {
-            return JsonResult.builder().code(JsonResult.SUCCESS).msg("登陆成功").data(properties.get(0)).build();
-        }
-        return JsonResult.builder().code(JsonResult.FAIL).msg("登陆失败").build();
+    public Property loginByUser(LoginUser loginUser) {
+        return this.getBaseMapper().login(loginUser);
     }
 }
