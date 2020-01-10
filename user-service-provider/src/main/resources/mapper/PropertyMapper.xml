@@ -27,4 +27,21 @@
             AND user_type = #{loginUser.identity}
         </where>
     </select>
+    
+    <!-- 返回用户列表 -->
+    <select id="selectPropertyList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> from property
+        <where>
+            <if test="propertyVo.username != null">
+                and username LIKE '%${propertyVo.username}%'
+            </if>
+            <if test="propertyVo.phone != null">
+                and phone = #{propertyVo.phone}
+            </if>
+            <if test="propertyVo.userType != null">
+                and user_type = #{propertyVo.userType}
+            </if>
+        </where>
+        order by create_time desc
+    </select>
 </mapper>

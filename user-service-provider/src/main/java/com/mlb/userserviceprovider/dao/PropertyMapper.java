@@ -4,6 +4,7 @@ package com.mlb.userserviceprovider.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
+import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,4 +26,11 @@ public interface PropertyMapper extends BaseMapper<Property> {
      * @return
      */
     Property login(@Param("loginUser")LoginUser loginUser);
+
+    /**
+     * 返回用户列表
+     * @param propertyVo
+     * @return
+     */
+    List<Property> selectPropertyList(@Param("propertyVo") PropertyVo propertyVo);
 }

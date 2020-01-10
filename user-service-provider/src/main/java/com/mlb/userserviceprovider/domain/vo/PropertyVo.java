@@ -1,0 +1,34 @@
+package com.mlb.userserviceprovider.domain.vo;
+
+
+import lombok.Data;
+
+import java.io.Serializable;
+import java.time.LocalDateTime;
+
+/**
+ * @author mlb
+ */
+@Data
+public class PropertyVo implements Serializable {
+    /** 用户id */
+    private Long userId;
+
+    /** 用户名 */
+    private String username;
+
+    /** 用户类型，1业主，2员工，3物业管理员，4租户 */
+    private Integer userType;
+
+    /**  性别，1男，2女  */
+    private Integer gender;
+
+    /**  注册时间   */
+    private LocalDateTime createTime;
+
+    /**  家庭住址   */
+    private String address;
+
+    /**  联系方式  */
+    private String phone;
+}
