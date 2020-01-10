@@ -1,6 +1,8 @@
 package com.mlb.orderserviceconsumer.controller;
 
 
+import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.date.DateUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mlb.userserviceprovider.common.JsonResult;
@@ -18,6 +20,9 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -53,13 +58,34 @@ public class PropertyController {
         return JsonResult.builder().code(JsonResult.SUCCESS).msg(JsonResult.SUCCESS_MSG).data(token).build();
     }
 
-//    @CrossOrigin
+    @CrossOrigin
     @PostMapping("/propertyList")
     @ResponseBody
     public JsonResult propertyList(PropertyVo propertyVo){
-        System.out.println(propertyVo);
         List<Property> propertyList = propertyService.propertyList(propertyVo);
-        return JsonResult.builder().data(propertyList).build();
+        if(ObjectUtil.isNull(propertyList)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("暂无数据").build();
+        }
+        List<PropertyVo> propertyVoList = new ArrayList<>();
+        propertyList.stream().forEach(item -> {
+            PropertyVo property = new PropertyVo();
+            BeanUtil.copyProperties(item,property);
+            if(item.getGender().equals(1)){
+                property.setGender("男");
+            }else{
+                property.setGender("女");
+            }
+            switch (item.getUserType()){
+                case 1: property.setUserType("业主");break;
+                case 2: property.setUserType("员工");break;
+                case 3: property.setUserType("物业管理员");break;
+                default: property.setUserType("租户");
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd HH:MM:SS");
+            property.setCreateTime(formatter.format(item.getCreateTime()));
+            propertyVoList.add(property);
+        });
+        return JsonResult.builder().data(propertyVoList).build();
     }
 
     /**

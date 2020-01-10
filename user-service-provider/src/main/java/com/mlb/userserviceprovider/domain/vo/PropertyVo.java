@@ -18,13 +18,13 @@ public class PropertyVo implements Serializable {
     private String username;
 
     /** 用户类型，1业主，2员工，3物业管理员，4租户 */
-    private Integer userType;
+    private String userType;
 
     /**  性别，1男，2女  */
-    private Integer gender;
+    private String gender;
 
     /**  注册时间   */
-    private LocalDateTime createTime;
+    private String createTime;
 
     /**  家庭住址   */
     private String address;
