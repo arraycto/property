@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/config/WebConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/config/WebConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/config/WebConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/PropertyVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/PropertyVo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/LoginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/LoginUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/LoginUser.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -146,7 +145,7 @@
       <workItem from="1578273935680" duration="167000" />
       <workItem from="1578274432511" duration="1409000" />
       <workItem from="1578619803085" duration="9000" />
-      <workItem from="1578632706374" duration="14661000" />
+      <workItem from="1578632706374" duration="20564000" />
     </task>
     <task id="LOCAL-00001" summary="property">
       <created>1576823727133</created>
@@ -176,7 +175,21 @@
       <option name="project" value="LOCAL" />
       <updated>1578641293542</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="list列表">
+      <created>1578650348035</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1578650348035</updated>
+    </task>
+    <task id="LOCAL-00006" summary="list列表">
+      <created>1578650367689</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1578650367689</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

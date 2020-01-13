@@ -13,14 +13,12 @@ import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.TimeoutUtils;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
 
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +46,7 @@ public class PropertyController {
     @PostMapping("/login")
     @ResponseBody
     public JsonResult loginByUser(@RequestBody LoginUser loginUser){
+        System.out.println(loginUser);
         Property property = propertyService.loginByUser(loginUser);
         if (ObjectUtil.isNull(property.getUserId())) {
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
