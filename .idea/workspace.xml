@@ -5,8 +5,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/LoginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/LoginUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/LoginUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/LoginUser.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/PropertyUserForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/PropertyUserForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/PropertyUserForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/PropertyUserForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyMapper.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -57,21 +59,22 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/Download/sb_cors_token_demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mlb.userserviceprovider.service" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\property\property\order-service-consumer\src\main\java\com\mlb\orderserviceconsumer\controller" />
       <recent name="E:\property\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\service\impl" />
       <recent name="E:\property\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\service" />
       <recent name="E:\property\property\user-service-provider\src\main\resources\mapper" />
       <recent name="E:\property\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\dao" />
+      <recent name="E:\property\property\user-service-provider\src\main\java\com\mlb\userserviceprovider\domain" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -145,7 +148,7 @@
       <workItem from="1578273935680" duration="167000" />
       <workItem from="1578274432511" duration="1409000" />
       <workItem from="1578619803085" duration="9000" />
-      <workItem from="1578632706374" duration="20564000" />
+      <workItem from="1578632706374" duration="34196000" />
     </task>
     <task id="LOCAL-00001" summary="property">
       <created>1576823727133</created>
@@ -189,7 +192,14 @@
       <option name="project" value="LOCAL" />
       <updated>1578650367689</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="list列表前后端联调">
+      <created>1578884872179</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1578884872179</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,6 +223,7 @@
     <MESSAGE value="登陆加用户类型验证" />
     <MESSAGE value="redis缓存设置" />
     <MESSAGE value="list列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="list列表" />
+    <MESSAGE value="list列表前后端联调" />
+    <option name="LAST_COMMIT_MESSAGE" value="list列表前后端联调" />
   </component>
 </project>
