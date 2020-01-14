@@ -1,6 +1,8 @@
 package com.mlb.userserviceprovider.domain.vo;
 
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.mlb.userserviceprovider.common.JsonLongSerializer;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @Data
 public class PropertyVo implements Serializable {
     /** 用户id */
+    @JsonSerialize(using = JsonLongSerializer.class)
     private Long userId;
 
     /** 用户名 */

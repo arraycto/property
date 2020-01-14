@@ -15,6 +15,7 @@ import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 import com.mlb.userserviceprovider.service.PropertyService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.RedisSerializer;
@@ -116,7 +117,11 @@ public class PropertyController {
     @ResponseBody
     @PostMapping("/deleteProperty")
     public JsonResult removeProperty(@RequestBody String userId){
-        Property property = propertyService.getById(Long.valueOf(userId));
+        long propertyId =Long.valueOf(userId.replaceAll("=",""));
+        Property property = propertyService.getById(propertyId);
+        if(ObjectUtil.isNull(property)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("该用户已经被删除").build();
+        }
         PropertyHistory propertyHistory = new PropertyHistory();
         BeanUtil.copyProperties(property,propertyHistory);
         propertyHistory.setRemoveTime(LocalDateTime.now());
