@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
+import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 
 import java.util.List;
@@ -31,6 +32,6 @@ public interface PropertyService extends IService<Property> {
      * @param propertyVo
      * @return
      */
-    List<Property> propertyList(PropertyVo propertyVo);
+    List<Property> propertyList(PropertyQuery propertyVo);
 
 }

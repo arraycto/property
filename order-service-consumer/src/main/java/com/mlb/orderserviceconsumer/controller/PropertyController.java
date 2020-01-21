@@ -12,6 +12,7 @@ import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
+import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 import com.mlb.userserviceprovider.service.PropertyService;
@@ -69,7 +70,7 @@ public class PropertyController {
     @CrossOrigin
     @PostMapping("/propertyList")
     @ResponseBody
-    public JsonResult propertyList(@RequestBody(required = false) PropertyVo propertyVo){
+    public JsonResult propertyList(PropertyQuery propertyVo){
         List<Property> propertyList = propertyService.propertyList(propertyVo);
         if(ObjectUtil.isNull(propertyList)){
             return JsonResult.builder().code(JsonResult.FAIL).msg("暂无数据").build();

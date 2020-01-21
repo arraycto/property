@@ -9,6 +9,7 @@ import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.dao.PropertyMapper;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
+import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.PropertyService;
 
@@ -32,7 +33,7 @@ public class PropertyServiceImpl extends ServiceImpl<PropertyMapper, Property> i
     }
 
     @Override
-    public List<Property> propertyList(PropertyVo propertyVo) {
+    public List<Property> propertyList(PropertyQuery propertyVo) {
         return this.getBaseMapper().selectPropertyList(propertyVo);
     }
 }

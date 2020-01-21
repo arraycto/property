@@ -37,10 +37,22 @@
                 and username LIKE '%${propertyVo.username}%'
             </if>
             <if test="propertyVo.phone != null">
-                and phone = #{propertyVo.phone}
+                and phone LIKE '${propertyVo.phone}%'
             </if>
-            <if test="propertyVo.userType != null">
+            <if test="propertyVo.userType != null and propertyVo.userType != 0">
                 and user_type = #{propertyVo.userType}
+            </if>
+            <if test="propertyVo.gender != null and propertyVo.gender != 0">
+                and gender = #{propertyVo.gender}
+            </if>
+            <if test="propertyVo.startTime != null">
+                and create_time <![CDATA[>= ]]> #{propertyVo.startTime}
+            </if>
+            <if test="propertyVo.endTime != null">
+                and create_time <![CDATA[<= ]]> #{propertyVo.endTime}
+            </if>
+            <if test="propertyVo.address != null">
+                and address LIKE '%${propertyVo.address}%'
             </if>
         </if>
         </where>
