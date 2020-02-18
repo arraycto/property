@@ -5,9 +5,10 @@ package com.mlb.userserviceprovider.common;
  */
 
 public enum UserTypeEnum {
-    HOUSE_HOLD(1,"住户"),
-    WORKER(2,"维修工"),
-    ADMIN(3,"管理员");
+    HOUSE_HOLD(1,"业主"),
+    WORKER(2,"员工"),
+    ADMIN(3,"物业管理员"),
+    TENANT(4,"租户");
 
     UserTypeEnum(Integer code, String detail) {
         this.code = code;

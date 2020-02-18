@@ -39,4 +39,12 @@ public class PropertyUserForm implements Serializable {
     @JsonProperty(value = "gender")
     @NotNull(message = "请选择用户性别")
     private Integer gender;
+
+    /**  房产信息id*/
+    @JsonProperty(value = "homeId")
+    private String homeId;
+
+    /**  租赁时长 */
+    @JsonProperty(value = "leaseDuration")
+    private Integer leaseDuration;
 }

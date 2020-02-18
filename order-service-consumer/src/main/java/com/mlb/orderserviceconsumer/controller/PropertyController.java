@@ -8,14 +8,19 @@ import com.alibaba.dubbo.config.annotation.Reference;
 import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.common.TokenUse;
+import com.mlb.userserviceprovider.common.UserTypeEnum;
+import com.mlb.userserviceprovider.domain.Home;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
+import com.mlb.userserviceprovider.domain.Propertyhome;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
+import com.mlb.userserviceprovider.service.HomeService;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 import com.mlb.userserviceprovider.service.PropertyService;
+import com.mlb.userserviceprovider.service.PropertyhomeService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -49,13 +54,19 @@ public class PropertyController {
     @Reference
     private PropertyHistoryService propertyHistoryService;
 
+    @Reference
+    private PropertyhomeService propertyhomeService;
+
+    @Reference
+    private HomeService homeService;
+
     @Autowired
     private RedisTemplate redisTemplate;
 
     @CrossOrigin
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult loginByUser(@RequestBody LoginUser loginUser){
+    public JsonResult loginByUser( LoginUser loginUser){//@RequestBody
         System.out.println(loginUser);
         Property property = propertyService.loginByUser(loginUser);
         if (ObjectUtil.isNull(property.getUserId())) {
@@ -100,7 +111,7 @@ public class PropertyController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/saveProperty")
-    public JsonResult addProperty(@RequestBody PropertyUserForm propertyUserForm){
+    public JsonResult addProperty(PropertyUserForm propertyUserForm){//@RequestBody
         Property property = new Property();
         BeanUtil.copyProperties(propertyUserForm,property);
         LocalDateTime date = LocalDateTime.now();
@@ -108,6 +119,24 @@ public class PropertyController {
         //运用雪花算法生成用户ID（唯一）
         SnowFlakeIdUtils snowFlakeIdUtils = new SnowFlakeIdUtils(9,1);
         property.setUserId(snowFlakeIdUtils.nextId());
+        //购买和租赁房屋需要添加信息关联表
+        if(UserTypeEnum.HOUSE_HOLD.getCode().equals(property.getUserType()) || UserTypeEnum.TENANT.getCode().equals(property.getUserType())){
+            if(JsonResult.FAIL.equals(this.checkHomeId(property,propertyUserForm.getHomeId()).getCode())){
+                return this.checkHomeId(property,propertyUserForm.getHomeId());
+            }
+            Propertyhome propertyhome = new Propertyhome();
+            propertyhome.setHomeId(Long.valueOf(propertyUserForm.getHomeId()));
+            propertyhome.setUserId(property.getUserId());
+            propertyhome.setPhone(property.getPhone());
+            propertyhome.setCreateTime(date);
+            if(UserTypeEnum.HOUSE_HOLD.getCode().equals(property.getUserType())){
+                propertyhome.setType(0);
+            }else{
+                propertyhome.setType(1);
+                propertyhome.setLeaseDuration(propertyUserForm.getLeaseDuration());
+            }
+            propertyhomeService.save(propertyhome);
+        }
         if(!propertyService.save(property)){
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
         }
@@ -117,22 +146,45 @@ public class PropertyController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/deleteProperty")
-    public JsonResult removeProperty(@RequestBody String userId){
-        long propertyId =Long.valueOf(userId.replaceAll("=",""));
+    public JsonResult removeProperty(String userId){//@RequestBody
+        long propertyId = Long.valueOf(userId.replaceAll("=", ""));
         Property property = propertyService.getById(propertyId);
-        if(ObjectUtil.isNull(property)){
+        if (ObjectUtil.isNull(property)) {
             return JsonResult.builder().code(JsonResult.FAIL).msg("该用户已经被删除").build();
         }
+        List<Propertyhome> propertyhomes = propertyhomeService.propertyList(userId);
+        if (propertyhomes.size() > 0) {
+            return JsonResult.builder().code(JsonResult.FAIL).msg("该用户尚未完全解除和房产信息之间的合同，无法删除").build();
+        }
         PropertyHistory propertyHistory = new PropertyHistory();
-        BeanUtil.copyProperties(property,propertyHistory);
+        BeanUtil.copyProperties(property, propertyHistory);
         propertyHistory.setRemoveTime(LocalDateTime.now());
-        if(!propertyService.removeById(property.getUserId())){
+        if (!propertyService.removeById(property.getUserId())) {
             return JsonResult.builder().code(JsonResult.FAIL).msg("删除用户失败").build();
-        };
-        if(!propertyHistoryService.save(propertyHistory)){
+        }
+        if (!propertyHistoryService.save(propertyHistory)) {
             return JsonResult.builder().code(JsonResult.FAIL).msg("保存失效用户信息失败").build();
-        };
+        }
         return JsonResult.builder().build();
+    }
+
+    /*
+        解除房产信息合同
+     */
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/terminate")
+    public JsonResult terminate(String userId,String homeId){
+        Propertyhome propertyhome = propertyhomeService.propertyhome(userId,homeId);
+        if(ObjectUtil.isNull(propertyhome)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("合同信息已解除").build();
+        }
+        propertyhome.setDeleted(1);
+        propertyhome.setEndTime(LocalDateTime.now());
+        if(!propertyhomeService.updateById(propertyhome)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("合同信息解除失败").build();
+        }
+        return JsonResult.builder().data(propertyhome).build();
     }
 
     /**
@@ -147,6 +199,19 @@ public class PropertyController {
         redisTemplate.setHashKeySerializer(stringSerializer);
         redisTemplate.setHashValueSerializer(stringSerializer);
         this.redisTemplate = redisTemplate;
+    }
+
+    //判断房产信息能否添加给用户
+    public JsonResult checkHomeId(Property property,String homeId){
+        Home home = homeService.getById(homeId);
+        if (ObjectUtil.isNull(home)) {
+            return JsonResult.builder().code(JsonResult.FAIL).msg("参数错误，未找到房产信息").build();
+        }
+        List<Propertyhome> propertyhomes = propertyhomeService.propertyHomeList(homeId);
+        if (propertyhomes.size() > 0) {
+            return JsonResult.builder().code(JsonResult.FAIL).msg("房屋有人居住，暂时无法出售或出租").build();
+        }
+        return JsonResult.builder().build();
     }
 }
 
