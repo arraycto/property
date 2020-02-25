@@ -3,6 +3,9 @@ package com.mlb.userserviceprovider.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mlb.userserviceprovider.domain.Bill;
+import com.mlb.userserviceprovider.domain.vo.BillQuery;
+
+import java.util.List;
 
 /**
  * <p>
@@ -21,5 +24,12 @@ public interface BillService extends IService<Bill> {
      * @return
      */
     Bill confirmBill(String userId,String homeId);
+
+    /**
+     * 返回账单列表
+     * @param billQuery
+     * @return
+     */
+    List<Bill> billList(BillQuery billQuery);
 
 }

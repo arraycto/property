@@ -42,4 +42,12 @@
             and removed = 1
         </where>
     </select>
+
+    <!--根据phone返回用户 -->
+    <select id="memberPhone" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM member
+        <where>
+            phone = #{phone}
+        </where>
+    </select>
 </mapper>

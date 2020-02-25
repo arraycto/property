@@ -23,4 +23,11 @@ public interface MemberService extends IService<Member> {
      * @return
      */
     List<Member> memberList(MemberQueryVo memberQueryVo);
+
+    /**
+     * 根据phone返回用户
+     * @param phone
+     * @return
+     */
+    Member memberPhone(String phone);
 }

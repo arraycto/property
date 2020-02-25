@@ -5,6 +5,9 @@ import lombok.Data;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * @author mlb
+ */
 @Data
 public class HomeQueryVo implements Serializable {
 

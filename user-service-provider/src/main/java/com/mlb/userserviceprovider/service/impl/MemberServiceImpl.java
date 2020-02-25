@@ -25,4 +25,9 @@ public class MemberServiceImpl extends ServiceImpl<MemberMapper, Member> impleme
     public List<Member> memberList(MemberQueryVo memberQueryVo) {
         return this.getBaseMapper().memberList(memberQueryVo);
     }
+
+    @Override
+    public Member memberPhone(String phone) {
+        return this.getBaseMapper().memberPhone(phone);
+    }
 }

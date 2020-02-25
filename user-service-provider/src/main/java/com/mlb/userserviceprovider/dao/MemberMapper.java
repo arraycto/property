@@ -26,4 +26,11 @@ public interface MemberMapper extends BaseMapper<Member> {
      * @return
      */
     List<Member> memberList(@Param("memberVo")MemberQueryVo memberQueryVo);
+
+    /**
+     * 根据phone返回用户
+     * @param phone
+     * @return
+     */
+    Member memberPhone(@Param("phone")String phone);
 }
