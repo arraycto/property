@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlb.userserviceprovider.dao.HomeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mlb.userserviceprovider.domain.Home">
+        <id column="home_id" property="homeId" />
+        <result column="unit" property="unit" />
+        <result column="floor" property="floor" />
+        <result column="room" property="room" />
+        <result column="create_time" property="createTime"/>
+        <result column="deleted" property="deleted"/>
+        <result column="delete_time" property="deletedTime"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        home_id, unit, floor, room,create_time,deleted,delete_time
+    </sql>
+
+    <select id="homeList" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> FROM home
+        <where>
+            <if test="homeQuery != null">
+                <if test="homeQuery.unit != null">
+                    and unit = #{homeQuery.unit}
+                </if>
+                <if test="homeQuery.floor != null">
+                    and floor = #{homeQuery.floor}
+                </if>
+                <if test="homeQuery.room != null">
+                    and room = #{homeQuery.room}
+                </if>
+                <if test="homeQuery.startTime != null">
+                    and create_time <![CDATA[>= ]]> #{homeQuery.startTime}
+                </if>
+                <if test="homeQuery.endTime != null">
+                    and create_time <![CDATA[<= ]]> #{homeQuery.endTime}
+                </if>
+            </if>
+            and deleted = 0
+        </where>
+    </select>
+</mapper>
