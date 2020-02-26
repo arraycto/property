@@ -11,8 +11,6 @@ import java.io.Serializable;
 public class BillQuery implements Serializable {
     /** 联系电话 */
     private String phone;
-    /** 月份 */
-    private String month;
     /** 缴纳开始时间 */
     private String payStartTime;
     /** 缴纳结束时间 */

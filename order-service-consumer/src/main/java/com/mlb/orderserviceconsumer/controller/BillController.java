@@ -52,9 +52,6 @@ public class BillController {
         BeanUtil.copyProperties(billForm,bill);
         LocalDateTime now = LocalDateTime.now();
         bill.setCreateTime(now);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy年MM月");
-        String mouth = now.format(formatter);
-        bill.setMonth(mouth);
         if(!billService.save(bill)){
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
         }
@@ -62,7 +59,7 @@ public class BillController {
     }
 
     /**
-     * 添加账单
+     * 支付账单
      * @return
      */
     @CrossOrigin

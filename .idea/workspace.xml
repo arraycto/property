@@ -2,22 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/BillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/BillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/BillMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/BillMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/MemberMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/MemberMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/HomeQueryVo.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/HomeQueryVo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/BillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/BillService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/BillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/BillServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/MemberServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/MemberServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/BillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/BillController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/property.iml" beforeDir="false" afterPath="$PROJECT_DIR$/property.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/Bill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/BillForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/BillForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/BillQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/BillQuery.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/BillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/BillMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/MemberMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/MemberMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/MemberMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/HomeQueryVo.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/HomeQueryVo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/MemberService.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/MemberService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/MemberServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/MemberServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/MemberMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/MemberMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Bill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/BillForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/BillForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/BillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/BillMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -188,6 +187,7 @@
       <workItem from="1581999130520" duration="4807000" />
       <workItem from="1582028002565" duration="1330000" />
       <workItem from="1582095393682" duration="4623000" />
+      <workItem from="1582683495227" duration="3974000" />
     </task>
     <task id="LOCAL-00001" summary="property">
       <created>1576823727133</created>
@@ -273,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582594574962</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="账单列表">
+      <created>1582598870798</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1582598870798</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +319,7 @@
     <MESSAGE value="删除用户" />
     <MESSAGE value="房产信息和租赁关联" />
     <MESSAGE value="账单" />
-    <option name="LAST_COMMIT_MESSAGE" value="账单" />
+    <MESSAGE value="账单列表" />
+    <option name="LAST_COMMIT_MESSAGE" value="账单列表" />
   </component>
 </project>

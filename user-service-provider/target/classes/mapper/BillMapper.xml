@@ -7,15 +7,16 @@
         <id column="user_id" property="userId" />
         <result column="home_id" property="homeId" />
         <result column="money" property="money" />
-        <result column="month" property="month" />
+        <result column="remark" property="remark" />
         <result column="payed" property="payed" />
+        <result column="deadline" property="deadline"/>
         <result column="pay_time" property="payTime" />
         <result column="create_time" property="createTime" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id, home_id, money, month, payed, pay_time, create_time
+        user_id, home_id, money, remark, payed, deadline , pay_time, create_time
     </sql>
 
     <select id="confirmBill" resultMap="BaseResultMap">
@@ -34,9 +35,6 @@
             <if test="billQuery != null">
                 <if test="billQuery.userId != null">
                     and user_id = #{billQuery.userId}
-                </if>
-                <if test="billQuery.month != null">
-                    and month = #{billQuery.month}
                 </if>
                 <if test="billQuery.payStartTime != null">
                     and pay_time <![CDATA[>= ]]> #{billQuery.payStartTime}

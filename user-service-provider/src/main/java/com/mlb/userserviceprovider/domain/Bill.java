@@ -39,14 +39,19 @@ public class Bill extends Model<Bill> {
     private BigDecimal money;
 
     /**
-     * 月份
+     * 账单信息
      */
-    private String month;
+    private String remark;
 
     /**
      * 是否缴纳，0未缴纳，1缴纳
      */
     private Integer payed;
+
+    /**
+     * 缴纳最后截止日期
+     */
+    private LocalDateTime deadline;
 
     /**
      * 缴纳日期

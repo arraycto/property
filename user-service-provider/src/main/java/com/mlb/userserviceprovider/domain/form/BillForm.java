@@ -22,4 +22,10 @@ public class BillForm implements Serializable {
     @JsonProperty(value = "money")
     @NotNull(message = "金额不能为空")
     private BigDecimal money;
+    @JsonProperty(value = "remark")
+    @NotBlank(message = "账单信息不能为空")
+    private String remark;
+    @JsonProperty(value = "deadline")
+    @NotBlank(message = "缴纳截止日期不能为空")
+    private String deadline;
 }
