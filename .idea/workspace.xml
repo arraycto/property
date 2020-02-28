@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/BillController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/BillController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/BillController.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/BillController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/property.iml" beforeDir="false" afterPath="$PROJECT_DIR$/property.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/Bill.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/BillForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/form/BillForm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/BillQuery.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/vo/BillQuery.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/order-service-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/BillMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/BillMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/BillService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/BillService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/BillServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/BillServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/BillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/BillMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Bill.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/BillForm.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/BillForm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/BillMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/BillMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/BillService.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/BillService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/BillServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/BillServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/BillMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/BillMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,10 +70,10 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -106,7 +101,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.OrderServiceConsumerApplication">
+  <component name="RunManager" selected="Application.MessageUtil">
+    <configuration name="MessageUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.mlb.orderserviceconsumer.util.MessageUtil" />
+      <module name="order-service-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.mlb.orderserviceconsumer.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="OrderServiceConsumerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="order-service-consumer" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.mlb.orderserviceconsumer.OrderServiceConsumerApplication" />
@@ -124,7 +132,13 @@
     <list>
       <item itemvalue="Spring Boot.OrderServiceConsumerApplication" />
       <item itemvalue="Spring Boot.UserServiceProviderApplication" />
+      <item itemvalue="Application.MessageUtil" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MessageUtil" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="allServicesViewState">
@@ -187,7 +201,7 @@
       <workItem from="1581999130520" duration="4807000" />
       <workItem from="1582028002565" duration="1330000" />
       <workItem from="1582095393682" duration="4623000" />
-      <workItem from="1582683495227" duration="3974000" />
+      <workItem from="1582683495227" duration="13793000" />
     </task>
     <task id="LOCAL-00001" summary="property">
       <created>1576823727133</created>
@@ -280,7 +294,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582598870798</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="账单修改">
+      <created>1582703928839</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1582703928839</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +341,7 @@
     <MESSAGE value="房产信息和租赁关联" />
     <MESSAGE value="账单" />
     <MESSAGE value="账单列表" />
-    <option name="LAST_COMMIT_MESSAGE" value="账单列表" />
+    <MESSAGE value="账单修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="账单修改" />
   </component>
 </project>

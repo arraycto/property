@@ -48,4 +48,12 @@
         </where>
     </select>
 
+    <select id="arrearsMembers" resultType="Long">
+        SELECT user_id FROM bill
+        <where>
+            payed =0
+            and deadline <![CDATA[< ]]> #{deadline}
+        </where>
+    </select>
+
 </mapper>

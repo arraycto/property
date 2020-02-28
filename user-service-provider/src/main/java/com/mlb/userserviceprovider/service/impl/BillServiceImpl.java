@@ -8,6 +8,7 @@ import com.mlb.userserviceprovider.domain.Bill;
 import com.mlb.userserviceprovider.domain.vo.BillQuery;
 import com.mlb.userserviceprovider.service.BillService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,5 +30,10 @@ public class BillServiceImpl extends ServiceImpl<BillMapper, Bill> implements Bi
     @Override
     public List<Bill> billList(BillQuery billQuery) {
         return this.getBaseMapper().billList(billQuery);
+    }
+
+    @Override
+    public List<Long> arrearsMembers(Date deadline) {
+        return this.getBaseMapper().arrearsMembers(deadline);
     }
 }

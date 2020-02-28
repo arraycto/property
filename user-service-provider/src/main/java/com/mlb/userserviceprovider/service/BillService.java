@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mlb.userserviceprovider.domain.Bill;
 import com.mlb.userserviceprovider.domain.vo.BillQuery;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -31,5 +32,12 @@ public interface BillService extends IService<Bill> {
      * @return
      */
     List<Bill> billList(BillQuery billQuery);
+
+    /**
+     * 返回欠费用户id
+     * @param deadline
+     * @return
+     */
+    List<Long> arrearsMembers(Date deadline);
 
 }

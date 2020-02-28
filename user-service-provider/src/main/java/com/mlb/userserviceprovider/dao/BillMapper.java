@@ -7,6 +7,7 @@ import com.mlb.userserviceprovider.domain.vo.BillQuery;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,4 +35,11 @@ public interface BillMapper extends BaseMapper<Bill> {
      * @return
      */
     List<Bill> billList(@Param("billQuery")BillQuery billQuery);
+
+    /**
+     * 统计欠费用户id
+     * @param deadline
+     * @return
+     */
+    List<Long> arrearsMembers(@Param("deadline") Date deadline);
 }
