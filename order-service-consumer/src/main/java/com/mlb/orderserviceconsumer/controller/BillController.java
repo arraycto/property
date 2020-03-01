@@ -5,12 +5,15 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mlb.userserviceprovider.common.JsonResult;
+import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.domain.Bill;
 import com.mlb.userserviceprovider.domain.Member;
+import com.mlb.userserviceprovider.domain.Propertyhome;
 import com.mlb.userserviceprovider.domain.form.BillForm;
 import com.mlb.userserviceprovider.domain.vo.BillQuery;
 import com.mlb.userserviceprovider.service.BillService;
 import com.mlb.userserviceprovider.service.MemberService;
+import com.mlb.userserviceprovider.service.PropertyhomeService;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +43,9 @@ public class BillController {
     @Reference
     private MemberService memberService;
 
+    @Reference
+    private PropertyhomeService propertyhomeService;
+
     /**
      * 添加账单
      * @return
@@ -48,10 +54,18 @@ public class BillController {
     @PostMapping("/add")
     @ResponseBody
     public JsonResult addBill(BillForm billForm){
+        //判断账单上的用户和房产信息是否关联
+        Propertyhome propertyhome = propertyhomeService.propertyhome(billForm.getUserId(),billForm.getHomeId());
+        if(ObjectUtil.isNull(propertyhome)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("用户和房产信息之间无关联").build();
+        }
         Bill bill = new Bill();
         BeanUtil.copyProperties(billForm,bill);
         LocalDateTime now = LocalDateTime.now();
         bill.setCreateTime(now);
+        //运用雪花算法生成唯一id
+        SnowFlakeIdUtils snowFlakeIdUtils = new SnowFlakeIdUtils(9,1);
+        bill.setBillId(snowFlakeIdUtils.nextId());
         if(!billService.save(bill)){
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
         }

@@ -23,9 +23,14 @@ public class Bill extends Model<Bill> {
     private static final long serialVersionUID=1L;
 
     /**
+     * 账单id
+     */
+    @TableId(value = "bill_id")
+    private Long billId;
+
+    /**
      * 用户id
      */
-    @TableId(value = "user_id")
     private Long userId;
 
     /**

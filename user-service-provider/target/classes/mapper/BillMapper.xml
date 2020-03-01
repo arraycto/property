@@ -4,7 +4,8 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.mlb.userserviceprovider.domain.Bill">
-        <id column="user_id" property="userId" />
+        <id column="bill_id" property="billId"/>
+        <result column="user_id" property="userId" />
         <result column="home_id" property="homeId" />
         <result column="money" property="money" />
         <result column="remark" property="remark" />
@@ -16,7 +17,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        user_id, home_id, money, remark, payed, deadline , pay_time, create_time
+        bill_id, user_id, home_id, money, remark, payed, deadline , pay_time, create_time
     </sql>
 
     <select id="confirmBill" resultMap="BaseResultMap">
