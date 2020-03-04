@@ -61,10 +61,10 @@ public class PropertyController {
     @CrossOrigin
     @PostMapping("/login")
     @ResponseBody
-    public JsonResult loginByUser(LoginUser loginUser){//@RequestBody
+    public JsonResult loginByUser(@RequestBody LoginUser loginUser){
         System.out.println(loginUser);
         Property property = propertyService.loginByUser(loginUser);
-        if (ObjectUtil.isNull(property.getUserId())) {
+        if (ObjectUtil.isNull(property)) {
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
         }
         String token = "Bearer:" + TokenUse.sign(property.getPhone(), property.getUserId());

@@ -10,6 +10,7 @@ import java.io.Serializable;
  */
 @Data
 public class LoginUser implements Serializable {
+    /**既可以用用户名，也可以用手机号登陆 */
     @JsonProperty(value = "username")
     private String username;
     @JsonProperty(value = "password")
