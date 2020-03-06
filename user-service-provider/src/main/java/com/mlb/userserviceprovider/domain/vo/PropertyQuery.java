@@ -27,9 +27,6 @@ public class PropertyQuery implements Serializable {
     /**  注册时间结束   */
     private String endTime;
 
-    /**  家庭住址   */
-    private String address;
-
     /**  联系方式  */
     private String phone;
 }

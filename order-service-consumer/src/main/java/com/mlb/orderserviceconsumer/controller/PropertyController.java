@@ -76,7 +76,7 @@ public class PropertyController {
     @CrossOrigin
     @PostMapping("/propertyList")
     @ResponseBody
-    public JsonResult propertyList(PropertyQuery propertyVo){
+    public JsonResult propertyList(@RequestBody(required = false) PropertyQuery propertyVo){
         List<Property> propertyList = propertyService.propertyList(propertyVo);
         if(ObjectUtil.isNull(propertyList)){
             return JsonResult.builder().code(JsonResult.FAIL).msg("暂无数据").build();
@@ -92,7 +92,7 @@ public class PropertyController {
             }
             switch (item.getUserType()){
                 case 1: property.setUserType("物业管理员");break;
-                case 2: property.setUserType("员工");break;
+                case 2: property.setUserType("普通员工");break;
             }
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             property.setCreateTime(formatter.format(item.getCreateTime()));

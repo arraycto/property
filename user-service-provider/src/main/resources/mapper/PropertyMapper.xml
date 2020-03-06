@@ -34,26 +34,23 @@
         SELECT <include refid="Base_Column_List"/> from property
         <where>
         <if test="propertyVo != null">
-            <if test="propertyVo.username != null">
+            <if test="propertyVo.username != null and propertyVo.username != '' ">
                 and username LIKE '%${propertyVo.username}%'
             </if>
-            <if test="propertyVo.phone != null">
+            <if test="propertyVo.phone != null and propertyVo.phone != ''">
                 and phone LIKE '${propertyVo.phone}%'
             </if>
-            <if test="propertyVo.userType != null and propertyVo.userType != 0">
+            <if test="propertyVo.userType != null and propertyVo.userType != ''">
                 and user_type = #{propertyVo.userType}
             </if>
-            <if test="propertyVo.gender != null and propertyVo.gender != 0">
+            <if test="propertyVo.gender != null and propertyVo.gender != ''">
                 and gender = #{propertyVo.gender}
             </if>
-            <if test="propertyVo.startTime != null">
+            <if test="propertyVo.startTime != null and propertyVo.startTime != ''">
                 and create_time <![CDATA[>= ]]> #{propertyVo.startTime}
             </if>
-            <if test="propertyVo.endTime != null">
+            <if test="propertyVo.endTime != null and propertyVo.endTime != ''">
                 and create_time <![CDATA[<= ]]> #{propertyVo.endTime}
-            </if>
-            <if test="propertyVo.address != null">
-                and address LIKE '%${propertyVo.address}%'
             </if>
         </if>
         </where>
