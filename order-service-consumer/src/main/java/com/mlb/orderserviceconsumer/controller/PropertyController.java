@@ -104,7 +104,7 @@ public class PropertyController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/saveProperty")
-    public JsonResult addProperty(PropertyUserForm propertyUserForm){//@RequestBody
+    public JsonResult addProperty(@RequestBody PropertyUserForm propertyUserForm){//
         Property property = new Property();
         BeanUtil.copyProperties(propertyUserForm,property);
         LocalDateTime date = LocalDateTime.now();
@@ -121,7 +121,8 @@ public class PropertyController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/deleteProperty")
-    public JsonResult removeProperty(String userId){//@RequestBody
+    public JsonResult removeProperty(@RequestBody String userId){//
+        System.out.println(userId);
         long propertyId = Long.valueOf(userId.replaceAll("=", ""));
         Property property = propertyService.getById(propertyId);
         if (ObjectUtil.isNull(property)) {
