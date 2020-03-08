@@ -1,62 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="">
+    <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="Default Changelist">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/application.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/Interceptor/SessionInterceptor.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/OrderServiceConsumerApplication.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/config/WebConfig.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/BillController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/HomeController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/MemberController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/cron/BillJob.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/util/MessageUtil.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/PropertyMapper.java" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/PropertyMapper.java" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/PropertyService.java" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/PropertyService.java" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/PropertyServiceImpl.java" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/PropertyServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/application.yml" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyMapper.xml" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/application.yml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/UserServiceProviderApplication.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/JsonLongSerializer.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/JsonResult$JsonResultBuilder.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/JsonResult.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/MybatisPlusConfig.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/SnowFlakeIdUtils.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/common/TokenUse.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/BillMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/HomeMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/MemberMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/PropertyHistoryMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/PropertyhomeMapper.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Bill.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Home.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Member.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Property.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/PropertyHistory.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/Propertyhome.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/BillForm.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/HomeForm.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/LoginUser.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/MemberForm.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/form/PropertyUserForm.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/BillQuery.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/HomeQueryVo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/MemberQueryVo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/vo/PropertyVo.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/BillService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/HomeService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/MemberService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/PropertyHistoryService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/PropertyhomeService.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/BillServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/HomeServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/MemberServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/PropertyHistoryServiceImpl.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/PropertyhomeServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/PropertyMapper.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/PropertyService.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/PropertyServiceImpl.class" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyMapper.xml" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyMapper.xml" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -573,7 +525,7 @@
       <workItem from="1583068842930" duration="47000" />
       <workItem from="1583571374607" duration="3591000" />
       <workItem from="1583647413390" duration="3593000" />
-      <workItem from="1583661100464" duration="5298000" />
+      <workItem from="1583661100464" duration="5423000" />
     </task>
     <task id="LOCAL-00001" summary="property">
       <created>1576823727133</created>
@@ -687,11 +639,18 @@
       <option name="project" value="LOCAL" />
       <updated>1583590078187</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="分页管理">
+      <created>1583675241400</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1583675241400</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12503000" />
+    <option name="totallyTimeSpent" value="12628000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -787,7 +746,8 @@
     <MESSAGE value="账单修改" />
     <MESSAGE value="登陆" />
     <MESSAGE value="人事管理界面" />
-    <option name="LAST_COMMIT_MESSAGE" value="人事管理界面" />
+    <MESSAGE value="分页管理" />
+    <option name="LAST_COMMIT_MESSAGE" value="分页管理" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
