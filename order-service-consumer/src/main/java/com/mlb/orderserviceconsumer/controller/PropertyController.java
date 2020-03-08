@@ -5,11 +5,14 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.mlb.userserviceprovider.common.JsonResult;
+import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.common.TokenUse;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
+import com.mlb.userserviceprovider.domain.form.PasswordForm;
+import com.mlb.userserviceprovider.domain.form.PropertyUpdateForm;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
@@ -76,29 +79,12 @@ public class PropertyController {
     @CrossOrigin
     @PostMapping("/propertyList")
     @ResponseBody
-    public JsonResult propertyList(@RequestBody(required = false) PropertyQuery propertyVo){
-        List<Property> propertyList = propertyService.propertyList(propertyVo);
-        if(ObjectUtil.isNull(propertyList)){
+    public JsonResult propertyList(@RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "10") String  size, @RequestBody(required = false)PropertyQuery propertyVo){
+        RespPageBean pageBean = propertyService.propertyList(propertyVo,Integer.valueOf(page),Integer.valueOf(size));
+        if(pageBean.getTotal() == 0){
             return JsonResult.builder().code(JsonResult.FAIL).msg("暂无数据").build();
         }
-        List<PropertyVo> propertyVoList = new ArrayList<>();
-        propertyList.stream().forEach(item -> {
-            PropertyVo property = new PropertyVo();
-            BeanUtil.copyProperties(item,property);
-            if(item.getGender().equals(1)){
-                property.setGender("男");
-            }else{
-                property.setGender("女");
-            }
-            switch (item.getUserType()){
-                case 1: property.setUserType("物业管理员");break;
-                case 2: property.setUserType("普通员工");break;
-            }
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            property.setCreateTime(formatter.format(item.getCreateTime()));
-            propertyVoList.add(property);
-        });
-        return JsonResult.builder().data(propertyVoList).build();
+        return JsonResult.builder().data(pageBean).build();
     }
 
     @CrossOrigin
@@ -116,6 +102,23 @@ public class PropertyController {
             return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
         }
         return JsonResult.builder().data(property).build();
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/updateProperty")
+    public JsonResult updateProperty(@RequestBody PropertyUpdateForm propertyUpdateForm){
+        Property property = propertyService.getById(Long.valueOf(propertyUpdateForm.getUserId()));
+        if(ObjectUtil.isNull(property)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("查无该用户").build();
+        }
+        property.setUsername(propertyUpdateForm.getUsername());
+        property.setPhone(propertyUpdateForm.getPhone());
+        property.setAddress(propertyUpdateForm.getAddress());
+        if(!propertyService.updateById(property)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("修改失败，请稍后重试").build();
+        }
+        return JsonResult.builder().build();
     }
 
     @CrossOrigin
@@ -140,6 +143,27 @@ public class PropertyController {
         return JsonResult.builder().build();
     }
 
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/changePassword")
+    public JsonResult changePassword(@RequestBody PasswordForm passwordForm){
+        if(this.checkPasswordForm(passwordForm).getCode().equals(JsonResult.FAIL)){
+            return this.checkPasswordForm(passwordForm);
+        }
+        Property property = propertyService.getById(passwordForm.getUserId());
+        if(ObjectUtil.isNull(property)){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("查找不到该用户").build();
+        }
+        if(property.getPassword().equals(passwordForm.getPassword())){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("新密码不能和旧密码一致").build();
+        }
+        property.setPassword(passwordForm.getPassword());
+        if(!propertyService.updateById(property)){
+            JsonResult.builder().code(JsonResult.FAIL).msg("修改密码失败").build();
+        }
+        return JsonResult.builder().build();
+    }
+
     /**
      * redisTemplate存值序列化
      * @param redisTemplate
@@ -152,6 +176,16 @@ public class PropertyController {
         redisTemplate.setHashKeySerializer(stringSerializer);
         redisTemplate.setHashValueSerializer(stringSerializer);
         this.redisTemplate = redisTemplate;
+    }
+
+    public JsonResult checkPasswordForm(PasswordForm passwordForm){
+        if(passwordForm.getPassword() == ""){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("密码不能为空").build();
+        }
+        if(!passwordForm.getPassword().equals(passwordForm.getCheckPassword())){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("两次密码不相同").build();
+        }
+        return JsonResult.builder().build();
     }
 }
 

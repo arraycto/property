@@ -3,6 +3,7 @@ package com.mlb.userserviceprovider.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mlb.userserviceprovider.common.JsonResult;
+import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.domain.Property;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
@@ -32,6 +33,6 @@ public interface PropertyService extends IService<Property> {
      * @param propertyVo
      * @return
      */
-    List<Property> propertyList(PropertyQuery propertyVo);
+    RespPageBean propertyList(PropertyQuery propertyVo, Integer page, Integer size);
 
 }

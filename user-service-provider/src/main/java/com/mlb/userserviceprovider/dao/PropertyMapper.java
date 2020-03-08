@@ -33,5 +33,5 @@ public interface PropertyMapper extends BaseMapper<Property> {
      * @param propertyVo
      * @return
      */
-    List<Property> selectPropertyList(@Param("propertyVo") PropertyQuery propertyVo);
+    List<Property> selectPropertyList(@Param("propertyVo") PropertyQuery propertyVo,@Param("page")Integer page,@Param("size")Integer size);
 }
