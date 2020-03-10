@@ -192,10 +192,13 @@ public class PropertyController {
         Date date = new Date();
         int m = date.getMonth();
         List<String> monthList = new ArrayList<>();
-        for(int i =0;i< 6;i++){
+        for(int i =5;i>= 0;i--){
+            m = (m+12-i)%12;
+            if(m == 0){
+                m=12;
+            }
             String s = String.valueOf(m).concat("月");
             monthList.add(s);
-            m--;
         }
         return JsonResult.builder().data(monthList).build();
     }
