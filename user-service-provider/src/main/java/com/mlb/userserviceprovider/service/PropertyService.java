@@ -31,6 +31,8 @@ public interface PropertyService extends IService<Property> {
     /**
      * 返回用户列表
      * @param propertyVo
+     * @param page
+     * @param size
      * @return
      */
     RespPageBean propertyList(PropertyQuery propertyVo, Integer page, Integer size);

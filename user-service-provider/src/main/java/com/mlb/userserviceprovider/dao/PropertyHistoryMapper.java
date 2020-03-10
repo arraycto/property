@@ -4,6 +4,9 @@ package com.mlb.userserviceprovider.dao;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * <p>
@@ -15,5 +18,9 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface PropertyHistoryMapper extends BaseMapper<PropertyHistory> {
-
+    /**
+     * 返回离职人员列表
+     * @return
+     */
+    List<PropertyHistory> selectQuitList();
 }

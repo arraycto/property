@@ -57,4 +57,31 @@
         order by create_time desc
         limit #{page}, #{size}
     </select>
+
+    <!--返回property人数 -->
+    <select id="propertyLength" resultType="integer">
+        SELECT count(*) from property
+        <where>
+            <if test="propertyVo != null">
+                <if test="propertyVo.username != null and propertyVo.username != '' ">
+                    and username LIKE '%${propertyVo.username}%'
+                </if>
+                <if test="propertyVo.phone != null and propertyVo.phone != ''">
+                    and phone LIKE '${propertyVo.phone}%'
+                </if>
+                <if test="propertyVo.userType != null and propertyVo.userType != ''">
+                    and user_type = #{propertyVo.userType}
+                </if>
+                <if test="propertyVo.gender != null and propertyVo.gender != ''">
+                    and gender = #{propertyVo.gender}
+                </if>
+                <if test="propertyVo.startTime != null and propertyVo.startTime != ''">
+                    and create_time <![CDATA[>= ]]> #{propertyVo.startTime}
+                </if>
+                <if test="propertyVo.endTime != null and propertyVo.endTime != ''">
+                    and create_time <![CDATA[<= ]]> #{propertyVo.endTime}
+                </if>
+            </if>
+        </where>
+    </select>
 </mapper>

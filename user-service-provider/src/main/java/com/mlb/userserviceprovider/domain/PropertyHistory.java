@@ -38,6 +38,11 @@ public class PropertyHistory extends Model<PropertyHistory> {
     private String phone;
 
     /**
+     * 用户类型，1物业管理员，2普通员工
+     */
+    private Integer userType;
+
+    /**
      * 创建时间
      */
     private LocalDateTime createTime;

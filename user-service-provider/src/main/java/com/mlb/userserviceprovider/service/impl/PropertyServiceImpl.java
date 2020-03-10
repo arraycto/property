@@ -61,7 +61,7 @@ public class PropertyServiceImpl extends ServiceImpl<PropertyMapper, Property> i
             propertyVoList.add(property);
         });
         pageBean.setData(propertyVoList);
-        pageBean.setTotal(propertyVoList.size());
+        pageBean.setTotal(this.getBaseMapper().propertyLength(propertyVo));
         return pageBean;
     }
 }

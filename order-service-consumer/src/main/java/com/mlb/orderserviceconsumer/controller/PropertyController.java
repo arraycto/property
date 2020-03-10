@@ -14,6 +14,7 @@ import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PasswordForm;
 import com.mlb.userserviceprovider.domain.form.PropertyUpdateForm;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
+import com.mlb.userserviceprovider.domain.vo.PropertyHistoryVo;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
 import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.HomeService;
@@ -81,9 +82,6 @@ public class PropertyController {
     @ResponseBody
     public JsonResult propertyList(@RequestParam(defaultValue = "1") String page, @RequestParam(defaultValue = "10") String  size, @RequestBody(required = false)PropertyQuery propertyVo){
         RespPageBean pageBean = propertyService.propertyList(propertyVo,Integer.valueOf(page),Integer.valueOf(size));
-        if(pageBean.getTotal() == 0){
-            return JsonResult.builder().code(JsonResult.FAIL).msg("暂无数据").build();
-        }
         return JsonResult.builder().data(pageBean).build();
     }
 
@@ -164,6 +162,28 @@ public class PropertyController {
         return JsonResult.builder().build();
     }
 
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/quitList")
+    public JsonResult quitList(){
+        List<PropertyHistory> propertyHistoryList = propertyHistoryService.QuitList();
+        List<PropertyHistoryVo> historyVos = new ArrayList<>();
+        propertyHistoryList.stream().forEach(item->{
+            PropertyHistoryVo propertyHistoryVo = new PropertyHistoryVo();
+            BeanUtil.copyProperties(item,propertyHistoryVo);
+            if (item.getUserType().equals(1)) {
+                propertyHistoryVo.setUserType("物业管理员");
+            }else{
+                propertyHistoryVo.setUserType("普通员工");
+            }
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            propertyHistoryVo.setCreateTime(formatter.format(item.getCreateTime()));
+            propertyHistoryVo.setRemoveTime(formatter.format(item.getRemoveTime()));
+            historyVos.add(propertyHistoryVo);
+        });
+        return JsonResult.builder().data(historyVos).build();
+    }
+
     /**
      * redisTemplate存值序列化
      * @param redisTemplate
@@ -178,6 +198,11 @@ public class PropertyController {
         this.redisTemplate = redisTemplate;
     }
 
+    /**
+     * 修改密码前置判断
+     * @param passwordForm
+     * @return
+     */
     public JsonResult checkPasswordForm(PasswordForm passwordForm){
         if(passwordForm.getPassword() == ""){
             return JsonResult.builder().code(JsonResult.FAIL).msg("密码不能为空").build();

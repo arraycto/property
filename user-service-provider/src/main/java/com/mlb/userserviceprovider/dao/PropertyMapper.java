@@ -31,7 +31,16 @@ public interface PropertyMapper extends BaseMapper<Property> {
     /**
      * 返回用户列表
      * @param propertyVo
+     * @param page
+     * @param size
      * @return
      */
     List<Property> selectPropertyList(@Param("propertyVo") PropertyQuery propertyVo,@Param("page")Integer page,@Param("size")Integer size);
+
+    /**
+     * 返回用户列表长度
+     * @param propertyVo
+     * @return
+     */
+    Integer propertyLength(@Param("propertyVo")PropertyQuery propertyVo);
 }
