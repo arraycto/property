@@ -16,7 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * 统计本月之前账单未付清用户
  * @author mlb
  */
 @Component
@@ -31,6 +30,9 @@ public class BillJob {
 
     private Logger logger = LoggerFactory.getLogger(BillJob.class);
 
+    /**
+     * 统计欠费名单
+     */
     @Scheduled(cron = "0 25 9 15/1 * ?  ")
     public void billMember(){
         Date deadline = new Date();

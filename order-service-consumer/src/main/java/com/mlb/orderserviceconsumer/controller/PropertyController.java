@@ -32,6 +32,7 @@ import org.springframework.stereotype.Controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -182,6 +183,21 @@ public class PropertyController {
             historyVos.add(propertyHistoryVo);
         });
         return JsonResult.builder().data(historyVos).build();
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/test")
+    public JsonResult test(){
+        Date date = new Date();
+        int m = date.getMonth();
+        List<String> monthList = new ArrayList<>();
+        for(int i =0;i< 6;i++){
+            String s = String.valueOf(m).concat("月");
+            monthList.add(s);
+            m--;
+        }
+        return JsonResult.builder().data(monthList).build();
     }
 
     /**
