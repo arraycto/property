@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,4 +25,12 @@ public interface PropertyHistoryService extends IService<PropertyHistory> {
      * @return
      */
     List<PropertyHistory> QuitList();
+
+    /**
+     * 统计上个月离职人员数量
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    Integer countQuitByTime(Date startTime,Date endTime);
 }

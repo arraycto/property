@@ -8,6 +8,7 @@ import com.mlb.userserviceprovider.dao.PropertyHistoryMapper;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -24,5 +25,10 @@ public class PropertyHistoryServiceImpl extends ServiceImpl<PropertyHistoryMappe
     @Override
     public List<PropertyHistory> QuitList() {
         return this.getBaseMapper().selectQuitList();
+    }
+
+    @Override
+    public Integer countQuitByTime(Date startTime, Date endTime) {
+        return this.getBaseMapper().countQuitByTime(startTime,endTime);
     }
 }

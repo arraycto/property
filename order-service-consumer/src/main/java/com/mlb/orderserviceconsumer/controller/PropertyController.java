@@ -9,6 +9,7 @@ import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.common.TokenUse;
 import com.mlb.userserviceprovider.domain.Property;
+import com.mlb.userserviceprovider.domain.PropertyCountQuit;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PasswordForm;
@@ -185,24 +186,6 @@ public class PropertyController {
         return JsonResult.builder().data(historyVos).build();
     }
 
-    @CrossOrigin
-    @ResponseBody
-    @PostMapping("/test")
-    public JsonResult test(){
-        Date date = new Date();
-        int m = date.getMonth();
-        List<String> monthList = new ArrayList<>();
-        for(int i =5;i>= 0;i--){
-            m = (m+12-i)%12;
-            if(m == 0){
-                m=12;
-            }
-            String s = String.valueOf(m).concat("月");
-            monthList.add(s);
-        }
-        return JsonResult.builder().data(monthList).build();
-    }
-
     /**
      * redisTemplate存值序列化
      * @param redisTemplate
@@ -216,6 +199,18 @@ public class PropertyController {
         redisTemplate.setHashValueSerializer(stringSerializer);
         this.redisTemplate = redisTemplate;
     }
+
+//    @ResponseBody
+//    @PostMapping("/test")
+//    public void reidsTest(){
+//        PropertyCountQuit propertyQuery = new PropertyCountQuit();
+//        propertyQuery.setId(1L);
+//        propertyQuery.setMonth("2019年11月");
+//        propertyQuery.setNum(100);
+//        System.out.println("Hello World");
+//        redisTemplate.opsForValue().set("hello",propertyQuery.toString());
+//        System.out.println(redisTemplate.opsForValue().get("hello"));
+//    }
 
     /**
      * 修改密码前置判断

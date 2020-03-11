@@ -6,6 +6,7 @@ import com.mlb.userserviceprovider.domain.PropertyHistory;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,4 +24,12 @@ public interface PropertyHistoryMapper extends BaseMapper<PropertyHistory> {
      * @return
      */
     List<PropertyHistory> selectQuitList();
+
+    /**
+     * 统计上个月离职人员数量
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    Integer countQuitByTime(@Param("startTime") Date startTime,@Param("endTime") Date endTime);
 }

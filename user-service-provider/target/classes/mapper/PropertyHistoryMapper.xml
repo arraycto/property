@@ -23,4 +23,11 @@
         order by remove_time
     </select>
 
+    <select id="countQuitByTime" resultType="integer">
+        SELECT count(*) from property_history
+        <where>
+            remove_time between #{startTime} and #{endTime}
+        </where>
+    </select>
+
 </mapper>
