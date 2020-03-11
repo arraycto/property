@@ -4,12 +4,12 @@ package com.mlb.orderserviceconsumer.controller;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.mlb.orderserviceconsumer.util.DateUtil;
 import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.common.TokenUse;
 import com.mlb.userserviceprovider.domain.Property;
-import com.mlb.userserviceprovider.domain.PropertyCountQuit;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PasswordForm;
@@ -17,15 +17,12 @@ import com.mlb.userserviceprovider.domain.form.PropertyUpdateForm;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
 import com.mlb.userserviceprovider.domain.vo.PropertyHistoryVo;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
-import com.mlb.userserviceprovider.domain.vo.PropertyVo;
 import com.mlb.userserviceprovider.service.HomeService;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 import com.mlb.userserviceprovider.service.PropertyService;
 import com.mlb.userserviceprovider.service.PropertyhomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.stereotype.Controller;
@@ -35,6 +32,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -186,31 +184,31 @@ public class PropertyController {
         return JsonResult.builder().data(historyVos).build();
     }
 
-    /**
-     * redisTemplate存值序列化
-     * @param redisTemplate
-     */
-    @Autowired(required = false)
-    public void setRedisTemplate(RedisTemplate redisTemplate) {
-        RedisSerializer stringSerializer = new StringRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setValueSerializer(stringSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(stringSerializer);
-        this.redisTemplate = redisTemplate;
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/countQuitMonth")
+    public JsonResult countQuitMonthList(){
+        Date startTime = DateUtil.getStartDayOfMonth(new Date());
+        String monthKey = "count:quitMonth";
+        List<String> monthList = new ArrayList<>();
+        if(redisTemplate.hasKey(monthKey)){
+             monthList = (List<String>)redisTemplate.opsForList().range(monthKey,0,-1).get(0);
+        }
+        return JsonResult.builder().data(monthList).build();
     }
 
-//    @ResponseBody
-//    @PostMapping("/test")
-//    public void reidsTest(){
-//        PropertyCountQuit propertyQuery = new PropertyCountQuit();
-//        propertyQuery.setId(1L);
-//        propertyQuery.setMonth("2019年11月");
-//        propertyQuery.setNum(100);
-//        System.out.println("Hello World");
-//        redisTemplate.opsForValue().set("hello",propertyQuery.toString());
-//        System.out.println(redisTemplate.opsForValue().get("hello"));
-//    }
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/countQuitNum")
+    public JsonResult countQuitNumList(){
+        Date startTime = DateUtil.getStartDayOfMonth(new Date());
+        String numKey = "count:quitNum";
+        List<Integer> numList = new ArrayList<>();
+        if( redisTemplate.hasKey(numKey)){
+              numList =  (List<Integer>)redisTemplate.opsForList().range(numKey,0,-1).get(0);
+        }
+        return JsonResult.builder().data(numList).build();
+    }
 
     /**
      * 修改密码前置判断

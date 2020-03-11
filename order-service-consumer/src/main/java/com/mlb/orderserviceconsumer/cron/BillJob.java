@@ -9,18 +9,17 @@ import com.mlb.userserviceprovider.service.BillService;
 import com.mlb.userserviceprovider.service.MemberService;
 import com.mlb.userserviceprovider.service.PropertyCountQuitService;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
-import net.sf.json.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.RedisSerializer;
-import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -64,10 +63,11 @@ public class BillJob {
         }
     }
 
-    @Scheduled(cron = "0/10 * * * * ? ")
-//    @Scheduled(cron = "* 30 23 L * ? *")
+//    @Scheduled(cron = "0/10 * * * * ?")
+//    @Scheduled(cron = "* 30 23 L * ? ")
     public void quitList(){
-        String key = "count:quit:";
+        String monthKey = "count:quitMonth";
+        String numKey = "count:quitNum";
         logger.info("开始统计本月离职人数");
         Date endTime = new Date();
         Date startTime = DateUtil.getStartDayOfMonth(endTime);
@@ -75,30 +75,25 @@ public class BillJob {
             PropertyCountQuit propertyCountQuit = new PropertyCountQuit();
             propertyCountQuit.setNum(propertyHistoryService.countQuitByTime(startTime, endTime));
             propertyCountQuit.setMonth(DateUtil.PreciseMonth(startTime));
+            propertyCountQuit.setCreateTime(LocalDateTime.now());
             //运用雪花算法生成ID（唯一）
             SnowFlakeIdUtils snowFlakeIdUtils = new SnowFlakeIdUtils(9,1);
             propertyCountQuit.setId(snowFlakeIdUtils.nextId());
             propertyCountQuitService.save(propertyCountQuit);
-            redisTemplate.opsForValue().set(key.concat(String.valueOf(startTime.getTime())),propertyCountQuit);
+            //获得近半年的离职人员列表
+            List<PropertyCountQuit> quits = propertyCountQuitService.quitList();
+            List<String> monthList =  new ArrayList<>();
+            List<Integer> numList = new ArrayList<>();
+            quits.stream().forEach(item->{
+                monthList.add(item.getMonth());
+                numList.add(item.getNum());
+            });
+            redisTemplate.opsForList().leftPush(monthKey,monthList);
+            redisTemplate.opsForList().leftPush(numKey,numList);
             logger.info("离职人数统计完毕");
         }catch (Exception e){
             logger.error("离职人数统计异常"+e.getMessage());
         }
-    }
-
-
-    /**
-     * redisTemplate存值序列化
-     * @param redisTemplate
-     */
-    @Autowired(required = false)
-    public void setRedisTemplate(RedisTemplate redisTemplate) {
-        RedisSerializer stringSerializer = new StringRedisSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setValueSerializer(stringSerializer);
-        redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(stringSerializer);
-        this.redisTemplate = redisTemplate;
     }
 
 }

@@ -7,6 +7,8 @@ import com.mlb.userserviceprovider.dao.PropertyCountQuitMapper;
 import com.mlb.userserviceprovider.domain.PropertyCountQuit;
 import com.mlb.userserviceprovider.service.PropertyCountQuitService;
 
+import java.util.List;
+
 /**
  * <p>
  *  服务实现类
@@ -18,4 +20,8 @@ import com.mlb.userserviceprovider.service.PropertyCountQuitService;
 @Service
 public class PropertyCountQuitServiceImpl extends ServiceImpl<PropertyCountQuitMapper, PropertyCountQuit> implements PropertyCountQuitService {
 
+    @Override
+    public List<PropertyCountQuit> quitList() {
+        return this.getBaseMapper().quitList();
+    }
 }

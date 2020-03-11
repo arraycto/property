@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
  * <p>
@@ -35,4 +36,9 @@ public class PropertyCountQuit extends Model<PropertyCountQuit> {
      * 人数
      */
     private Integer num;
+
+    /**
+     * 创建时间
+     */
+    private LocalDateTime createTime;
 }
