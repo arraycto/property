@@ -29,10 +29,7 @@ import org.springframework.stereotype.Controller;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -188,11 +185,11 @@ public class PropertyController {
     @ResponseBody
     @PostMapping("/countQuitMonth")
     public JsonResult countQuitMonthList(){
-        Date startTime = DateUtil.getStartDayOfMonth(new Date());
         String monthKey = "count:quitMonth";
         List<String> monthList = new ArrayList<>();
         if(redisTemplate.hasKey(monthKey)){
              monthList = (List<String>)redisTemplate.opsForList().range(monthKey,0,-1).get(0);
+             Collections.reverse(monthList);
         }
         return JsonResult.builder().data(monthList).build();
     }
@@ -201,11 +198,11 @@ public class PropertyController {
     @ResponseBody
     @PostMapping("/countQuitNum")
     public JsonResult countQuitNumList(){
-        Date startTime = DateUtil.getStartDayOfMonth(new Date());
         String numKey = "count:quitNum";
         List<Integer> numList = new ArrayList<>();
         if( redisTemplate.hasKey(numKey)){
               numList =  (List<Integer>)redisTemplate.opsForList().range(numKey,0,-1).get(0);
+              Collections.reverse(numList);
         }
         return JsonResult.builder().data(numList).build();
     }

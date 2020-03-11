@@ -2,27 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="645bbae7-cd19-41cb-8c1d-ec52cad6a698" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/order-service-consumer.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order-service-consumer/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/controller/PropertyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/cron/BillJob.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/cron/BillJob.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/util/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/src/main/java/com/mlb/orderserviceconsumer/util/DateUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/controller/PropertyController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/cron/BillJob.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/cron/BillJob.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/util/DateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/order-service-consumer/target/classes/com/mlb/orderserviceconsumer/util/DateUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/PropertyCountQuitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/dao/PropertyCountQuitMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/PropertyCountQuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/domain/PropertyCountQuit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/PropertyCountQuitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/PropertyCountQuitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/PropertyCountQuitServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/java/com/mlb/userserviceprovider/service/impl/PropertyCountQuitServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyCountQuitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/src/main/resources/mapper/PropertyCountQuitMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/PropertyCountQuitMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/dao/PropertyCountQuitMapper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/PropertyCountQuit.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/domain/PropertyCountQuit.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/PropertyCountQuitService.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/PropertyCountQuitService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/PropertyCountQuitServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/com/mlb/userserviceprovider/service/impl/PropertyCountQuitServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyCountQuitMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/target/classes/mapper/PropertyCountQuitMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" beforeDir="false" afterPath="$PROJECT_DIR$/user-service-provider/user-service-provider.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +98,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.UserServiceProviderApplication">
+  <component name="RunManager" selected="Application.DateUtil">
     <configuration name="DateUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mlb.orderserviceconsumer.util.DateUtil" />
       <module name="order-service-consumer" />
@@ -423,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583897404479</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="离职员工近半年情况柱状图">
+      <created>1583913590300</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1583913590300</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -480,6 +473,7 @@
     <MESSAGE value="分业管理" />
     <MESSAGE value="离职员工页面展示" />
     <MESSAGE value="离职员工人数统计" />
-    <option name="LAST_COMMIT_MESSAGE" value="离职员工人数统计" />
+    <MESSAGE value="离职员工近半年情况柱状图" />
+    <option name="LAST_COMMIT_MESSAGE" value="离职员工近半年情况柱状图" />
   </component>
 </project>

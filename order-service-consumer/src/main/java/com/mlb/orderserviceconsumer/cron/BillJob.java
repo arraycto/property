@@ -63,14 +63,13 @@ public class BillJob {
         }
     }
 
-//    @Scheduled(cron = "0/10 * * * * ?")
-//    @Scheduled(cron = "* 30 23 L * ? ")
+    @Scheduled(cron = "0 0 1 1 * ? ")
     public void quitList(){
         String monthKey = "count:quitMonth";
         String numKey = "count:quitNum";
-        logger.info("开始统计本月离职人数");
-        Date endTime = new Date();
-        Date startTime = DateUtil.getStartDayOfMonth(endTime);
+        logger.info("开始统计上月离职人数");
+        Date endTime = DateUtil.getEndDayOfLastMonth(new Date());
+        Date startTime = DateUtil.getStartDayOfLastMonth(new Date());
         try {
             PropertyCountQuit propertyCountQuit = new PropertyCountQuit();
             propertyCountQuit.setNum(propertyHistoryService.countQuitByTime(startTime, endTime));
