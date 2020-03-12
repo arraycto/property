@@ -20,6 +20,11 @@
     <!--返回离职人员列表 -->
     <select id="selectQuitList" resultMap="BaseResultMap">
         SELECT <include refid="Base_Column_List"/> from property_history
+        <where>
+            <if test="phone != null">
+                and phone like '%${phone}%'
+            </if>
+        </where>
         order by remove_time
     </select>
 
@@ -30,4 +35,21 @@
         </where>
     </select>
 
+    <!--统计上个月管理员离职情况-->
+    <select id="countQuitAdmin" resultType="integer">
+        SELECT count(*) from property_history
+        <where>
+            remove_time between #{startTime} and #{endTime}
+            and user_type = 1
+        </where>
+    </select>
+
+    <!--统计上个月普通员工离职情况-->
+    <select id="countQuitOrdinary" resultType="integer">
+        SELECT count(*) from property_history
+        <where>
+            remove_time between #{startTime} and #{endTime}
+            and user_type = 2
+        </where>
+    </select>
 </mapper>

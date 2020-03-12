@@ -10,6 +10,7 @@ import com.mlb.userserviceprovider.common.RespPageBean;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.common.TokenUse;
 import com.mlb.userserviceprovider.domain.Property;
+import com.mlb.userserviceprovider.domain.PropertyCountQuit;
 import com.mlb.userserviceprovider.domain.PropertyHistory;
 import com.mlb.userserviceprovider.domain.form.LoginUser;
 import com.mlb.userserviceprovider.domain.form.PasswordForm;
@@ -17,10 +18,13 @@ import com.mlb.userserviceprovider.domain.form.PropertyUpdateForm;
 import com.mlb.userserviceprovider.domain.form.PropertyUserForm;
 import com.mlb.userserviceprovider.domain.vo.PropertyHistoryVo;
 import com.mlb.userserviceprovider.domain.vo.PropertyQuery;
+import com.mlb.userserviceprovider.domain.vo.QuitCircleVo;
 import com.mlb.userserviceprovider.service.HomeService;
 import com.mlb.userserviceprovider.service.PropertyHistoryService;
 import com.mlb.userserviceprovider.service.PropertyService;
 import com.mlb.userserviceprovider.service.PropertyhomeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -58,6 +62,8 @@ public class PropertyController {
 
     @Autowired
     private RedisTemplate redisTemplate;
+
+    private Logger logger = LoggerFactory.getLogger(PropertyController.class);
 
     @CrossOrigin
     @PostMapping("/login")
@@ -162,8 +168,12 @@ public class PropertyController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/quitList")
-    public JsonResult quitList(){
-        List<PropertyHistory> propertyHistoryList = propertyHistoryService.QuitList();
+    public JsonResult quitList(@RequestBody(required = false) String phone){
+        if(phone !=null) {
+            phone = phone.replaceAll("=", "");
+            logger.info("{},搜索离职人员的手机号参数:{}",new Date(),phone);
+        }
+        List<PropertyHistory> propertyHistoryList = propertyHistoryService.QuitList(phone);
         List<PropertyHistoryVo> historyVos = new ArrayList<>();
         propertyHistoryList.stream().forEach(item->{
             PropertyHistoryVo propertyHistoryVo = new PropertyHistoryVo();
@@ -205,6 +215,19 @@ public class PropertyController {
               Collections.reverse(numList);
         }
         return JsonResult.builder().data(numList).build();
+    }
+
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/countQuitCircle")
+    public JsonResult countQuitCircle(){
+        Date endTime = DateUtil.getEndDayOfLastMonth(new Date());
+        Date startTime = DateUtil.getStartDayOfLastMonth(new Date());
+        logger.info("离职管理员和普通员工比例统计开始时间:{}",startTime);
+        logger.info("离职管理员和普通员工比例统计结束时间:{}",endTime);
+        List<QuitCircleVo> quitCircleVos = propertyHistoryService.countQuitCircle(startTime,endTime);
+        logger.info("离职管理员和普通员工比例统计结果:{}",quitCircleVos);
+        return JsonResult.builder().data(quitCircleVos).build();
     }
 
     /**

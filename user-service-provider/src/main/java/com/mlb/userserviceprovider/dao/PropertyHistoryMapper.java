@@ -21,9 +21,10 @@ import java.util.List;
 public interface PropertyHistoryMapper extends BaseMapper<PropertyHistory> {
     /**
      * 返回离职人员列表
+     * @param phone
      * @return
      */
-    List<PropertyHistory> selectQuitList();
+    List<PropertyHistory> selectQuitList(@Param("phone") String phone);
 
     /**
      * 统计上个月离职人员数量
@@ -32,4 +33,20 @@ public interface PropertyHistoryMapper extends BaseMapper<PropertyHistory> {
      * @return
      */
     Integer countQuitByTime(@Param("startTime") Date startTime,@Param("endTime") Date endTime);
+
+    /**
+     * 统计上个月管理员离职情况
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    Integer countQuitAdmin(@Param("startTime") Date startTime,@Param("endTime") Date endTime);
+
+    /**
+     * 统计上个月普通员工离职情况
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    Integer countQuitOrdinary(@Param("startTime") Date startTime,@Param("endTime") Date endTime);
 }

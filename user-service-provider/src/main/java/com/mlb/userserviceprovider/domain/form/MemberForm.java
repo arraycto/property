@@ -27,9 +27,14 @@ public class MemberForm implements Serializable {
     @NotNull(message = "请选择用户类型")
     private Integer userType;
 
-    /**  房产信息id*/
-    @JsonProperty(value = "homeId")
-    private String homeId;
+    @JsonProperty(value = "unit")
+    private Integer unit;
+
+    @JsonProperty(value = "floor")
+    private Integer floor;
+
+    @JsonProperty(value = "room")
+    private Integer room;
 
     /**  租赁时长 */
     @JsonProperty(value = "leaseDuration")

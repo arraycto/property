@@ -49,7 +49,7 @@ public class Member extends Model<Member> {
     @TableField("create_time")
     private LocalDateTime createTime;
     /**
-     * 是否离开，1未离开，2离开
+     * 状态，1正常，2离开，3停水，4停电，5停水+停电
      */
     private Integer removed;
     /**

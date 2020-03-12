@@ -25,4 +25,24 @@ public class HomeServiceImpl extends ServiceImpl<HomeMapper, Home> implements Ho
     public List<Home> homeList(HomeQueryVo homeQueryVo) {
         return this.getBaseMapper().homeList(homeQueryVo);
     }
+
+    @Override
+    public Long roomNumberByHomeId(Integer unit, Integer floor, Integer room) {
+        return this.getBaseMapper().roomNumberByHomeId(unit,floor,room);
+    }
+
+    @Override
+    public List<Integer> unitList() {
+        return this.getBaseMapper().unitList();
+    }
+
+    @Override
+    public List<Integer> floorList(String unit) {
+        return this.getBaseMapper().floorList(unit);
+    }
+
+    @Override
+    public List<Integer> roomList(String unit, String floor) {
+        return this.getBaseMapper().roomList(unit, floor);
+    }
 }
