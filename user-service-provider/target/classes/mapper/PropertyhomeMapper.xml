@@ -37,6 +37,16 @@
         </where>
     </select>
 
+    <!--根据用户id查找房产信息，不管删除与否-->
+    <select id="memberHome" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM propertyhome
+        <where>
+            user_id = #{userId}
+        </where>
+    </select>
+
 
     <!--根据userid和homeid找到唯一关联数据-->
     <select id="propertyHome" resultMap="BaseResultMap">
