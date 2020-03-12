@@ -53,7 +53,7 @@
 
     <!-- 返回单元号 -->
     <select id="unitList" resultType="integer">
-        SELECT unit from home
+        SELECT DISTINCT(unit) from home
         where deleted = 0
     </select>
 

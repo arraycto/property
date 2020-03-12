@@ -37,4 +37,11 @@ public interface PropertyhomeService extends IService<Propertyhome> {
      * @return
      */
     Propertyhome propertyhome(String userId,String homeId);
+
+    /**
+     * 根据用户id查找房产信息，不管删除与否
+     * @param userId
+     * @return
+     */
+    List<Propertyhome> memberHome(Long userId);
 }

@@ -221,8 +221,8 @@ public class PropertyController {
     @ResponseBody
     @PostMapping("/countQuitCircle")
     public JsonResult countQuitCircle(){
-        Date endTime = DateUtil.getEndDayOfLastMonth(new Date());
-        Date startTime = DateUtil.getStartDayOfLastMonth(new Date());
+        Date endTime = new Date();
+        Date startTime = DateUtil.getStartDayOfMonth(new Date());
         logger.info("离职管理员和普通员工比例统计开始时间:{}",startTime);
         logger.info("离职管理员和普通员工比例统计结束时间:{}",endTime);
         List<QuitCircleVo> quitCircleVos = propertyHistoryService.countQuitCircle(startTime,endTime);

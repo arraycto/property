@@ -60,7 +60,7 @@ public class MemberController {
     @CrossOrigin
     @ResponseBody
     @PostMapping("/addMember")
-    public JsonResult addMember(MemberForm memberForm) {
+    public JsonResult addMember(@RequestBody MemberForm memberForm) {
         Member member = new Member();
         BeanUtil.copyProperties(memberForm, member);
         member.setCreateTime(LocalDateTime.now());
@@ -114,25 +114,26 @@ public class MemberController {
     @PostMapping("/list")
     public JsonResult memberList(@RequestBody(required = false) MemberQueryVo memberQueryVo){
         List<Member> members = memberService.memberList(memberQueryVo);
+        logger.info("数组长度:{}", members.size());
         List<MemberVo> memberVos = new ArrayList<>();
-        members.stream().forEach(item-> {
+        members.stream().forEach(item -> {
             MemberVo memberVo = new MemberVo();
-            BeanUtil.copyProperties(item,memberVo);
+            logger.info(item.toString());
+            BeanUtil.copyProperties(item, memberVo);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             memberVo.setCreateTime(formatter.format(item.getCreateTime()));
-            memberVo.setCreateTime(formatter.format(item.getCreateTime()));
             memberVo.setRemoved(MemberStatus.getStatus(item.getRemoved()).getDetail());
-            List<Propertyhome> propertyHomes = propertyhomeService.propertyList(String.valueOf(item.getUserId()));
-            if(item.getUserType().equals(1)){
+            List<Propertyhome> propertyHomes = propertyhomeService.memberHome(item.getUserId());
+            if (item.getUserType().equals(1)) {
                 memberVo.setUserType("业主");
                 memberVo.setLeaseDuration("-");
-            }else{
+            } else {
                 memberVo.setUserType("租户");
                 memberVo.setLeaseDuration(String.valueOf(propertyHomes.get(0).getLeaseDuration()));
             }
             Home home = homeService.getById(propertyHomes.get(0).getHomeId());
             memberVo.setHomeId(home.getHomeId());
-            memberVo.setHome(home.getUnit()+"单元"+home.getFloor()+"楼"+home.getRoom()+"室");
+            memberVo.setHome(home.getUnit() + "单元" + home.getFloor() + "楼" + home.getRoom() + "室");
             memberVos.add(memberVo);
         });
         return JsonResult.builder().data(memberVos).build();
@@ -214,8 +215,7 @@ public class MemberController {
 
     /**
      * 返回所有房间号
-     * @param unit
-     * @Param floor
+     * Param UnitFloor
      * @return
      */
     @CrossOrigin

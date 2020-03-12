@@ -34,4 +34,9 @@ public class PropertyhomeServiceImpl extends ServiceImpl<PropertyhomeMapper, Pro
     public Propertyhome propertyhome(String userId, String homeId) {
         return this.getBaseMapper().propertyHome(homeId,userId);
     }
+
+    @Override
+    public List<Propertyhome> memberHome(Long userId) {
+        return this.getBaseMapper().memberHome(userId);
+    }
 }

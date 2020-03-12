@@ -36,6 +36,13 @@ public interface PropertyhomeMapper extends BaseMapper<Propertyhome> {
     List<Propertyhome> propertyList(@Param("userId")String userId);
 
     /**
+     * 根据用户id查找房产信息，不管删除与否
+     * @param userId
+     * @return
+     */
+    List<Propertyhome> memberHome(@Param("userId")Long userId);
+
+    /**
      * 根据userid和homeid找到唯一关联数据
      * @param homeId
      * @param userId
