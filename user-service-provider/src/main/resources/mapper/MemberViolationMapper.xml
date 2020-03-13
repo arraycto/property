@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mlb.userserviceprovider.dao.MemberViolationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.mlb.userserviceprovider.domain.MemberViolation">
+        <id column="violation_id" property="violationId"/>
+        <result column="user_id" property="userId" />
+        <result column="username" property="username" />
+        <result column="punish" property="punish" />
+        <result column="create_time" property="createTime" />
+        <result column="deleted" property="deleted" />
+        <result column="update_time" property="updateTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        violation_id,user_id, username, punish, create_time, deleted, update_time
+    </sql>
+
+    <!--查询住户处罚操作-->
+    <select id="listByUserId" resultMap="BaseResultMap">
+        SELECT <include refid="Base_Column_List"/> from member_violation
+        <where>
+            user_id = #{userId}
+            and deleted = 1
+        </where>
+    </select>
+</mapper>

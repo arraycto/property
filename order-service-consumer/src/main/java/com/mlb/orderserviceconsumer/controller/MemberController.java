@@ -4,18 +4,22 @@ package com.mlb.orderserviceconsumer.controller;
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjectUtil;
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.mlb.userserviceprovider.common.JsonResult;
 import com.mlb.userserviceprovider.common.MemberStatus;
 import com.mlb.userserviceprovider.common.SnowFlakeIdUtils;
 import com.mlb.userserviceprovider.domain.Home;
 import com.mlb.userserviceprovider.domain.Member;
+import com.mlb.userserviceprovider.domain.MemberViolation;
 import com.mlb.userserviceprovider.domain.Propertyhome;
 import com.mlb.userserviceprovider.domain.form.MemberForm;
+import com.mlb.userserviceprovider.domain.form.MemberViolationForm;
 import com.mlb.userserviceprovider.domain.form.UnitFloor;
 import com.mlb.userserviceprovider.domain.vo.MemberQueryVo;
 import com.mlb.userserviceprovider.domain.vo.MemberVo;
 import com.mlb.userserviceprovider.service.HomeService;
 import com.mlb.userserviceprovider.service.MemberService;
+import com.mlb.userserviceprovider.service.MemberViolationService;
 import com.mlb.userserviceprovider.service.PropertyhomeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +53,9 @@ public class MemberController {
 
     @Reference
     private PropertyhomeService propertyhomeService;
+
+    @Reference
+    private MemberViolationService memberViolationService;
 
     private Logger logger = LoggerFactory.getLogger(MemberController.class);
 
@@ -177,6 +184,49 @@ public class MemberController {
         }
         logger.info("{},id：{}的用户删除成功，合同解除完成",new Date(),memberVo.getUserId());
         return JsonResult.builder().data(member).build();
+    }
+
+    /**
+     * 违规用户的处罚
+     * @param form
+     * @return
+     */
+    @CrossOrigin
+    @ResponseBody
+    @PostMapping("/violation")
+    public JsonResult violationMember(@RequestBody MemberViolationForm form){
+        MemberViolation memberViolation = new MemberViolation();
+        BeanUtil.copyProperties(form,memberViolation);
+        Member member = memberService.getById(memberViolation.getUserId());
+        if(ObjectUtil.isNull(member) || member.getRemoved().equals(MemberStatus.LEAVE.getCode())){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("查无该用户或该用户已经离开").build();
+        }
+        //运用雪花算法生成用户ID（唯一）
+        SnowFlakeIdUtils snowFlakeIdUtils = new SnowFlakeIdUtils(9, 1);
+        memberViolation.setViolationId(snowFlakeIdUtils.nextId());
+        memberViolation.setUsername(member.getUsername());
+        memberViolation.setCreateTime(LocalDateTime.now());
+        memberViolation.setUpdateTime(LocalDateTime.now());
+        switch (memberViolation.getPunish()){
+            case 1: member.setRemoved(MemberStatus.WATER_CUT_OFF.getCode());break;
+            case 2: member.setRemoved(MemberStatus.POWER_FAILURE.getCode());break;
+            default:member.setRemoved(MemberStatus.STOP_WATER_POWER.getCode());
+        }
+        memberService.updateById(member);
+        //处罚时将之前的处罚记录覆盖，deleted改为删除
+        List<MemberViolation> memberViolations = memberViolationService.listByUserId(member.getUserId());
+        memberViolations.stream().forEach(item->{
+            item.setDeleted(2);
+            item.setUpdateTime(LocalDateTime.now());
+            memberViolationService.updateById(item);
+        });
+        logger.info("{},开始存储用户id:{}的处罚信息", new Date(), memberViolation.getUserId());
+        if(!memberViolationService.save(memberViolation)) {
+            logger.error("{},存储用户id:{}的处罚信息失败", new Date(), memberViolation.getUserId());
+            return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
+        }
+        logger.error("{},存储用户id:{}的处罚信息结束", new Date(),memberViolation.getUserId());
+        return JsonResult.builder().build();
     }
 
     /**
