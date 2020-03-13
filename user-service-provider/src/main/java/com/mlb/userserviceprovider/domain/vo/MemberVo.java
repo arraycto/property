@@ -28,6 +28,7 @@ public class MemberVo implements Serializable {
     /** 状态，1正常，2离开，3停水，4停电，5停水+停电*/
     private String removed;
 
+    @JsonSerialize(using = JsonLongSerializer.class)
     private Long homeId;
 
     /**  居住房屋,名下有多套默认选择第一套  */

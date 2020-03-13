@@ -26,6 +26,7 @@ import org.springframework.stereotype.Controller;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,6 +62,7 @@ public class MemberController {
     @ResponseBody
     @PostMapping("/addMember")
     public JsonResult addMember(@RequestBody MemberForm memberForm) {
+        logger.info("{}添加住户",new Date());
         Member member = new Member();
         BeanUtil.copyProperties(memberForm, member);
         member.setCreateTime(LocalDateTime.now());
@@ -87,6 +89,7 @@ public class MemberController {
         }
         propertyhomeService.save(propertyhome);
         memberService.save(member);
+        logger.info("{}添加住户成功",new Date());
         return JsonResult.builder().data(member).build();
     }
 
@@ -114,11 +117,9 @@ public class MemberController {
     @PostMapping("/list")
     public JsonResult memberList(@RequestBody(required = false) MemberQueryVo memberQueryVo){
         List<Member> members = memberService.memberList(memberQueryVo);
-        logger.info("数组长度:{}", members.size());
         List<MemberVo> memberVos = new ArrayList<>();
         members.stream().forEach(item -> {
             MemberVo memberVo = new MemberVo();
-            logger.info(item.toString());
             BeanUtil.copyProperties(item, memberVo);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
             memberVo.setCreateTime(formatter.format(item.getCreateTime()));
@@ -140,49 +141,41 @@ public class MemberController {
     }
 
     /**
-     * 解除房产信息合同
-     * @param userId
-     * @param homeId
-     * @return
-     */
-    @CrossOrigin
-    @ResponseBody
-    @PostMapping("/terminate")
-    public JsonResult terminate(String userId,String homeId){
-        Propertyhome propertyhome = propertyhomeService.propertyhome(userId,homeId);
-        if(ObjectUtil.isNull(propertyhome)){
-            return JsonResult.builder().code(JsonResult.FAIL).msg("合同信息已解除").build();
-        }
-        propertyhome.setDeleted(1);
-        propertyhome.setEndTime(LocalDateTime.now());
-        if(!propertyhomeService.updateById(propertyhome)){
-            return JsonResult.builder().code(JsonResult.FAIL).msg("合同信息解除失败").build();
-        }
-        return JsonResult.builder().data(propertyhome).build();
-    }
-
-    /**
-     * 住户离去
-     * @param userId
+     * 解除房产信息合同，用户离去
+     * @param memberVo
      * @return
      */
     @CrossOrigin
     @ResponseBody
     @PostMapping("/delete")
-    public JsonResult deleteMember(String userId){
-        Member member = memberService.getById(userId);
-        if (ObjectUtil.isNull(member) || member.getRemoved() == 2){
+    public JsonResult deleteMember(@RequestBody MemberVo memberVo){
+        logger.info("{}，删除的住户id为{},房产信息id为{}",new Date(),memberVo.getUserId(),memberVo.getHomeId());
+        Member member = memberService.getById(memberVo.getUserId());
+        if (ObjectUtil.isNull(member) || member.getRemoved().equals(MemberStatus.LEAVE.getCode())){
             return JsonResult.builder().code(JsonResult.FAIL).msg("该用户已经离开").build();
         }
-        List<Propertyhome> propertyhomes = propertyhomeService.propertyList(userId);
-        if(propertyhomes.size() > 0){
-            return JsonResult.builder().code(JsonResult.FAIL).msg("该用户未完全解除和房产信息之间的合同，无法删除").build();
+        Propertyhome propertyhome = propertyhomeService.propertyhome(String.valueOf(memberVo.getUserId()),String.valueOf(memberVo.getHomeId()));
+        if(ObjectUtil.isNotNull(propertyhome)){
+            propertyhome.setDeleted(1);
+            propertyhome.setEndTime(LocalDateTime.now());
+            try{
+                propertyhomeService.updateById(propertyhome);
+                logger.info("{}，{}和{}的合同解除成功",new Date(),memberVo.getUserId(),memberVo.getHomeId());
+            }catch (Exception e){
+                logger.error("{},{}和{}的合同解除失败，异常{}",new Date(),memberVo.getUserId(),memberVo.getHomeId(),e.getMessage());
+            }
         }
-        member.setRemoved(2);
+        List<Propertyhome> propertyHomes = propertyhomeService.propertyList(String.valueOf(memberVo.getUserId()));
+        if(propertyHomes.size() > 0){
+            return JsonResult.builder().code(JsonResult.FAIL).msg("该用户没有完全解除房产信息合同，不能删除").build();
+        }
+        member.setRemoved(MemberStatus.LEAVE.getCode());
         member.setRemoveTime(LocalDateTime.now());
         if(!memberService.updateById(member)){
-            return JsonResult.builder().code(JsonResult.FAIL).msg(JsonResult.FAIL_MSG).build();
+            logger.error("{}，id:{}的用户删除失败",new Date(),memberVo.getUserId());
+            return JsonResult.builder().code(JsonResult.FAIL).msg("异常处理，删除失败").build();
         }
+        logger.info("{},id：{}的用户删除成功，合同解除完成",new Date(),memberVo.getUserId());
         return JsonResult.builder().data(member).build();
     }
 
@@ -207,7 +200,6 @@ public class MemberController {
     @PostMapping("/floorList")
     @ResponseBody
     public JsonResult floorList(@RequestBody(required = false)String unit){
-        logger.info("单元号选择为:{}",unit);
         List<Integer> floors = homeService.floorList(unit);
         return JsonResult.builder().data(floors).build();
     }
@@ -222,7 +214,6 @@ public class MemberController {
     @PostMapping("/roomList")
     @ResponseBody
     public JsonResult roomList(@RequestBody(required = false)UnitFloor unitFloor){
-        logger.info("单元号选择为:{} 楼层选择为:{}",unitFloor.getUnit(),unitFloor.getFloor());
         List<Integer> rooms = homeService.roomList(unitFloor.getUnit(),unitFloor.getFloor());
         return JsonResult.builder().data(rooms).build();
     }
